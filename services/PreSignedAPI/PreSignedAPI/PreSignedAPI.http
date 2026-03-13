@@ -1,0 +1,6 @@
+@PreSignedAPI_HostAddress = http://localhost:5062
+
+GET {{PreSignedAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

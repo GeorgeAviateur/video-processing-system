@@ -1,0 +1,29 @@
+### Presigned API HTTP Requests
+### Use with RestClient VS Code extension or Postman
+
+@baseUrl = https://localhost:5001
+@objectKey = videos/test-video.mp4
+@prefix = videos/
+
+### Health Check
+GET {{baseUrl}}/api/presignedurl/health HTTP/1.1
+
+### Generate Download Presigned URL
+GET {{baseUrl}}/api/presignedurl/download?objectKey={{objectKey}} HTTP/1.1
+
+### Generate Upload Presigned URL
+GET {{baseUrl}}/api/presignedurl/upload?objectKey={{objectKey}} HTTP/1.1
+
+### List Objects
+GET {{baseUrl}}/api/presignedurl/list?prefix={{prefix}} HTTP/1.1
+
+### Revoke Access (Delete Object)
+DELETE {{baseUrl}}/api/presignedurl/revoke?objectKey={{objectKey}} HTTP/1.1
+
+### Upload a File (requires a presigned URL)
+# First get an upload URL from the /upload endpoint, then use that URL:
+# PUT <presigned-url> < @/path/to/file.mp4
+
+### Download a File (requires a presigned URL)
+# First get a download URL from the /download endpoint, then:
+# GET <presigned-url>
