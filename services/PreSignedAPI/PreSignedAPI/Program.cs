@@ -8,9 +8,9 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
 // Configure AWS S3 Client
-var awsAccessKey = builder.Configuration["AWS:AccessKey"];
-var awsSecretKey = builder.Configuration["AWS:SecretKey"];
-var awsRegion = builder.Configuration["AWS:Region"];
+var awsAccessKey = Environment.GetEnvironmentVariable("AWS_ACCESS_KEY");
+var awsSecretKey = Environment.GetEnvironmentVariable("AWS_SECRET_KEY");
+var awsRegion = Environment.GetEnvironmentVariable("AWS_REGION");
 
 var s3Client = new AmazonS3Client(
     awsAccessKey,

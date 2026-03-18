@@ -28,7 +28,8 @@ public class S3PresignedUrlService : IS3PresignedUrlService
     {
         try
         {
-            var bucketName = _configuration["AWS:BucketName"];
+            
+            var bucketName = Environment.GetEnvironmentVariable("AWS_BUCKET_NAME");
             var expirationMinutes = int.Parse(_configuration["PresignedUrl:ExpirationMinutes"] ?? "30");
 
             var request = new GetPreSignedUrlRequest
@@ -54,7 +55,7 @@ public class S3PresignedUrlService : IS3PresignedUrlService
     {
         try
         {
-            var bucketName = _configuration["AWS:BucketName"];
+            var bucketName = Environment.GetEnvironmentVariable("AWS_BUCKET_NAME");
             var expirationMinutes = int.Parse(_configuration["PresignedUrl:ExpirationMinutes"] ?? "30");
 
             var request = new GetPreSignedUrlRequest
@@ -80,7 +81,7 @@ public class S3PresignedUrlService : IS3PresignedUrlService
     {
         try
         {
-            var bucketName = _configuration["AWS:BucketName"];
+            var bucketName = Environment.GetEnvironmentVariable("AWS_BUCKET_NAME");
 
             // Note: Presigned URLs cannot be revoked directly. 
             // This method demonstrates best practices:
@@ -108,7 +109,7 @@ public class S3PresignedUrlService : IS3PresignedUrlService
     {
         try
         {
-            var bucketName = _configuration["AWS:BucketName"];
+            var bucketName = Environment.GetEnvironmentVariable("AWS_BUCKET_NAME");
             var listRequest = new ListObjectsV2Request
             {
                 BucketName = bucketName,
