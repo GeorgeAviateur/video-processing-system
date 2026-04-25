@@ -42,7 +42,6 @@ Client → API (Presigned URL)
 
 ![Processing Demo](./docs/processing.gif)
 
-> You can record GIFs using tools like **ScreenToGif** or **Kap**.
 
 ---
 
